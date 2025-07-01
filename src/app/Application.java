@@ -22,6 +22,7 @@ public class Application {
         // Etape 3 : Création d'un pilote de Formule 1 et afficher ses informations
         // ---------------------------------------------------------------------------------------
         Pilote[] pilotes = new Pilote[1];
+        //MR Ce constructeur n'existe pas dans la classe Pilote, il faut utiliser le constructeur avec les paramètres nom, nationalité et voiture
         pilotes[0] = new Pilote("Leclerc", "Monégasque", voitures[0], null, 16, 65, 3, 7);
         // ---------------------------------------------------------------------------------------
         // Etape 4 : Afficher le Pilote
@@ -31,10 +32,12 @@ public class Application {
         // Etape 5 : Tests des méthodes de la classe Pilote
         // ---------------------------------------------------------------------------------------
         // deposerPneuEnReserve() 5 fois de types différents
+        //MR De quelle objet est-ce que tu appelles la méthode deposerPneuEnReserve ?
         deposerPneuEnReserve();
         // retirerPneuEnReserve() de type TENDRE_ROUGE et l'afficher
         retirerPneuEnReserve(TypePneu.TENDRE_ROUGE);
         // getNombrePneusEnReserve() et afficher le nombre de pneus en réserve
+        //MR Tu ne peux pas appeler getNombrePneusEnReserve directement sur la classe Pilote, il faut l'appeler sur une instance de Pilote
         System.out.println(Pilote.getNombrePneusEnReserve());
         // getPneusEnReserveSansTrous() et afficher les pneus en réserve
         System.out.println(Pilote.getPneusEnReserveSansTrous());

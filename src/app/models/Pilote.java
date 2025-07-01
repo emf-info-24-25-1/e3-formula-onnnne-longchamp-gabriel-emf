@@ -4,6 +4,8 @@ import java.util.Arrays;
 
 public class Pilote {
     public static final int NOMBRE_PNEUS_EN_RESERVE = 16;
+    // MR Tu as oublié le mot-clé final pour indiquer que cette valeur ne changera
+    // pas pour les deux premiers attributs
     private String nom;
     private String nationalite;
     private int nombrePoints;
@@ -20,6 +22,8 @@ public class Pilote {
         this.nombreCourse = 0;
         this.nombreVictoires = 0;
         this.nombrePodiums = 0;
+        // MR Il faut initialiser le tableau pneusEnReserve avec la taille
+        // NOMBRE_PNEUS_EN_RESERVE
         this.pneusEnReserve = null;
         this.voiture = null;
     }
@@ -31,11 +35,15 @@ public class Pilote {
         this.nombreCourse = 0;
         this.nombreVictoires = 0;
         this.nombrePodiums = 0;
+        // MR Il faut initialiser le tableau pneusEnReserve avec la taille
+        // NOMBRE_PNEUS_EN_RESERVE
         this.pneusEnReserve = null;
         this.voiture = voiture;
     }
 
     public boolean deposerPneuEnReserve(Pneu pneu) {
+        // MR On a pas besoin d'utiliser un tableau dynamique on le met où il y a de la
+        // place
         boolean reussi = false;
         Pneu[] pneus = new Pneu[pneusEnReserve.length + 1];
         for (int i = 0; i < pneusEnReserve.length; i++) {
@@ -51,6 +59,7 @@ public class Pilote {
         return reussi;
     }
 
+    //MR Syntaxe incorrecte et code non formatté illisible
     public Pneu retirerPneuEnReserve(TypePneu type) {
     for (int i = 0; i < pneusEnReserve.length; i++) {
     Pneu pneu : pneusEnReserve[i];
@@ -65,6 +74,8 @@ public class Pilote {
     public int compterNombrePneusEnReserveDeType(TypePneu pneu) {
         int compteur = 0;
         for (int i = 0; i < pneusEnReserve.length; i++) {
+            //MR Il faut vérifier si le pneu n'est pas null avant de comparer les types
+            //MR Il faut mieux utiliser == pour comparer les types de pneus
             if (pneusEnReserve[i].getType().equals(pneu)) {
                 compteur++;
             }
@@ -73,6 +84,7 @@ public class Pilote {
     }
 
     public int getNombrePneusEnReserve() {
+        //MR Si tu utilises un tableau dynamique, c'est ok comme ça, mais ce n'est pas ce qui est demandé
         int compteur;
         compteur = pneusEnReserve.length;
         return compteur;
@@ -86,6 +98,7 @@ public class Pilote {
             }
             Pneu[] sansTrous = new Pneu[count];
             int index = 0;
+            //MR Il faut le faire en dehors de la boucle des pneusEnReserve
             for (Pneu sansTrou : pneusEnReserve) {
                 sansTrous[index++] = pneu;
             }
@@ -101,12 +114,16 @@ public class Pilote {
             }
         }
         double moyenne = 0;
+        //MR Il faut compter le nombre de pneus non null et pas utiliser la longueur du tableau pneusEnReserve
+        //MR Il faut vérifier si pneusEnReserve.length n'est pas 0 pour éviter la division par zéro
         moyenne = pressionTotale / pneusEnReserve.length;
+        //MR Formatage pas réalisé
         String chaineString = "";
         return chaineString;
     }
 
     public int supprimerPneusDePressionInferieure(double pression) {
+        //MR Pourquoi faire la moyenne des pressions pour supprimer les pneus ?
         int pressionTotale = 0;
         for (int i = 0; i < pneusEnReserve.length; i++) {
             if (pneusEnReserve[i] != null) {
@@ -137,6 +154,7 @@ public class Pilote {
             if (p == null) {
                 placesLibres++;
             }
+            //MR Il faut sortir de la boucle de comptage des places libres
             if (placesLibres > pneu.length) {
                 return false;
             }
